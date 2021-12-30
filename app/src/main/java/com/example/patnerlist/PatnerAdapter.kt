@@ -17,14 +17,9 @@ class PatnerAdapter (
 
     class PatnerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        var tvPatnerTitleP: TextView
-        var cbDoneP: CheckBox
+        val tvPatnerTitleP: TextView = itemView.findViewById(R.id.tvPatnerTitle)
+        val cbDoneP: CheckBox = itemView.findViewById(R.id.cbDone)
 
-        init {
-            tvPatnerTitleP = itemView.findViewById(R.id.tvPatnerTitle)
-            cbDoneP = itemView.findViewById(R.id.cbDone)
-
-        }
     }
 
 
@@ -59,6 +54,7 @@ class PatnerAdapter (
             tvPatnerTitleP.paintFlags=tvPatnerTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
         }
     }
+
     override fun onBindViewHolder(holder: PatnerAdapter.PatnerViewHolder, position: Int) {
         val curPatner = patners[position]
         holder.itemView.apply {
