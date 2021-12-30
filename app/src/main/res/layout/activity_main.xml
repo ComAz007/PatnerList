@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:hint="Enter patner Title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnAddPatnerList"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddPatnerList"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
