@@ -11,15 +11,25 @@ import androidx.recyclerview.widget.RecyclerView
 
 class PatnerAdapter (
       private val patners: MutableList<Patner>
-        ): RecyclerView.Adapter<PatnerAdapter.PatnerViewHolder>() {
+          ): RecyclerView.Adapter<PatnerAdapter.PatnerViewHolder>() {
 
-    private val  tvPatnerTitleP: TextView by lazy{findViewById(R.id.tvPatnerTitle)}
-    private val  cbDoneP: CheckBox by lazy{findViewById(R.id.cbDone)}
+
 
     class PatnerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        var tvPatnerTitleP: TextView
+        var cbDoneP: CheckBox
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatnerViewHolder {
-        return PatnerViewHolder(
+        init {
+            tvPatnerTitleP = itemView.findViewById(R.id.tvPatnerTitle)
+            cbDoneP = itemView.findViewById(R.id.cbDone)
+
+        }
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatnerAdapter.PatnerViewHolder {
+        return PatnerAdapter.PatnerViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_patner,
                 parent,
@@ -27,6 +37,7 @@ class PatnerAdapter (
             )
         )
     }
+
 
     fun addPatner(patner:Patner){
         patners.add(patner)
@@ -48,15 +59,15 @@ class PatnerAdapter (
             tvPatnerTitleP.paintFlags=tvPatnerTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
         }
     }
-    override fun onBindViewHolder(holder: PatnerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PatnerAdapter.PatnerViewHolder, position: Int) {
         val curPatner = patners[position]
         holder.itemView.apply {
             //val tvPatnerTitle= findViewById(R.id.tvPatnerTitle)
-            tvPatnerTitleP.text=curPatner.title
+            holder.tvPatnerTitleP.text=curPatner.title
             //val cbDone=findViewById(R.id.cbDone)
-            cbDoneP.isChecked=curPatner.isChecked
+            holder.cbDoneP.isChecked=curPatner.isChecked
             toggleStrikeThrough(tvPatnerTitleP,curPatner.isChecked)
-            cbDoneP.setOnCheckedChangeListener { _, isChecked ->
+            holder.cbDoneP.setOnCheckedChangeListener { _, isChecked ->
                 toggleStrikeThrough(tvPatnerTitleP,isChecked)
                 curPatner.isChecked= !curPatner.isChecked
             }
