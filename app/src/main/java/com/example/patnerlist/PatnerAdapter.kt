@@ -48,10 +48,10 @@ class PatnerAdapter (
     private fun toggleStrikeThrough(tvPatnerTitle: TextView, isChecked: Boolean)
     {
         if (isChecked){
-            tvPatnerTitleP.paintFlags=tvPatnerTitle.paintFlags or STRIKE_THRU_TEXT_FLAG
+            tvPatnerTitle.paintFlags=tvPatnerTitle.paintFlags or STRIKE_THRU_TEXT_FLAG
         }
         else{
-            tvPatnerTitleP.paintFlags=tvPatnerTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
+            tvPatnerTitle.paintFlags=tvPatnerTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
         }
     }
 
@@ -62,9 +62,9 @@ class PatnerAdapter (
             holder.tvPatnerTitleP.text=curPatner.title
             //val cbDone=findViewById(R.id.cbDone)
             holder.cbDoneP.isChecked=curPatner.isChecked
-            toggleStrikeThrough(tvPatnerTitleP,curPatner.isChecked)
+            toggleStrikeThrough(holder.tvPatnerTitleP,curPatner.isChecked)
             holder.cbDoneP.setOnCheckedChangeListener { _, isChecked ->
-                toggleStrikeThrough(tvPatnerTitleP,isChecked)
+                toggleStrikeThrough(holder.tvPatnerTitleP,isChecked)
                 curPatner.isChecked= !curPatner.isChecked
             }
         }
