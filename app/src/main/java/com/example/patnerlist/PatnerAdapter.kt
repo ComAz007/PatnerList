@@ -58,9 +58,7 @@ class PatnerAdapter (
     override fun onBindViewHolder(holder: PatnerAdapter.PatnerViewHolder, position: Int) {
         val curPatner = patners[position]
         holder.itemView.apply {
-            //val tvPatnerTitle= findViewById(R.id.tvPatnerTitle)
             holder.tvPatnerTitleP.text=curPatner.title
-            //val cbDone=findViewById(R.id.cbDone)
             holder.cbDoneP.isChecked=curPatner.isChecked
             toggleStrikeThrough(holder.tvPatnerTitleP,curPatner.isChecked)
             holder.cbDoneP.setOnCheckedChangeListener { _, isChecked ->
